@@ -48,16 +48,16 @@ const Contact = () => {
           </a>
         </div>
       </div>
-      <p className="font-semibold text-4xl mb-4">GALLERY</p>
+      {/* <p className="font-semibold text-4xl mb-4">GALLERY</p> */}
       {/* 👇 CircularGallery sticks to bottom now */}
-      <div className="w-full mb-12">
+      {/* <div className="w-full mb-12">
         <InfiniteScroll
           items={items}
           autoplay={true}
           autoplaySpeed={2}
           itemMinWidth={300}
         />
-      </div>
+      </div> */}
     </div>
   );
 };
