@@ -1,5 +1,3 @@
-// InfiniteScroll.jsx
-
 import { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { Observer } from "gsap/Observer";
@@ -7,21 +5,16 @@ import { Observer } from "gsap/Observer";
 gsap.registerPlugin(Observer);
 
 export default function InfiniteScroll({
-  // ----- Layout / Style Props -----
-  width = "100%", // Width of the outer wrapper
-  maxHeight = "30rem", // Max-height of the outer wrapper (swap with width if needed)
-  negativeMargin = "-0.5em", // Negative margin to reduce spacing between items
-  // ----- Items Prop -----
-  items = [], // Array of items with { content: ... }
-  itemMinWidth = 150, // Fixed width for each item (changed from height)
-  // ----- Tilt Props -----
-  isTilted = false, // Whether the container is in "skewed" perspective
-  tiltDirection = "left", // tiltDirection: "left" or "right"
-  // ----- Autoplay Props -----
-  autoplay = false, // Whether it should automatically scroll
-  autoplaySpeed = 0.5, // Speed (pixels/frame approx.)
-  autoplayDirection = "right", // "right" or "left"
-  pauseOnHover = false, // Pause autoplay on hover
+  width = "100%",
+  maxHeight = "30rem",
+  items = [],
+  itemMinWidth = 150,
+  isTilted = false,
+  tiltDirection = "left",
+  autoplay = false,
+  autoplaySpeed = 0.5,
+  autoplayDirection = "right",
+  pauseOnHover = false,
 }) {
   const wrapperRef = useRef(null);
   const containerRef = useRef(null);
@@ -35,24 +28,18 @@ export default function InfiniteScroll({
 
   useEffect(() => {
     const container = containerRef.current;
-    if (!container) return;
-    if (items.length === 0) return;
+    if (!container || items.length === 0) return;
 
     const divItems = gsap.utils.toArray(container.children);
     if (!divItems.length) return;
 
-    const firstItem = divItems[0];
-    const itemStyle = getComputedStyle(firstItem);
-    const itemWidth = firstItem.offsetWidth;
-    const itemMarginLeft = parseFloat(itemStyle.marginLeft) || 0;
-    const totalItemWidth = itemWidth + itemMarginLeft;
-    const totalWidth =
-      itemWidth * items.length + itemMarginLeft * (items.length - 1);
+    const itemWidth = divItems[0].offsetWidth;
+    const totalWidth = itemWidth * items.length;
 
     const wrapFn = gsap.utils.wrap(-totalWidth, totalWidth);
 
     divItems.forEach((child, i) => {
-      const x = i * totalItemWidth;
+      const x = i * itemWidth;
       gsap.set(child, { x });
     });
 
@@ -67,7 +54,6 @@ export default function InfiniteScroll({
         target.style.cursor = "grab";
       },
       onChange: ({ deltaY, deltaX, isDragging, event }) => {
-        // Use deltaX for horizontal scroll input, fallback to deltaY if needed
         const d =
           event.type === "wheel" ? -deltaX || -deltaY : deltaX || deltaY;
         const distance = isDragging ? d * 5 : d * 10;
@@ -136,18 +122,16 @@ export default function InfiniteScroll({
     pauseOnHover,
     isTilted,
     tiltDirection,
-    negativeMargin,
   ]);
 
   return (
     <div
-      className="relative flex items-center justify-center w-full overflow-hidden overscroll-none border-l-2 border-r-2 border-l-dotted border-r-dotted border-transparent"
+      className="relative flex items-center justify-center w-full overflow-hidden overscroll-none"
       ref={wrapperRef}
-      style={{ maxHeight: width }} // Flip width and height for horizontal scroll
+      style={{ width, maxHeight }}
     >
-      {/* Container */}
       <div
-        className="flex flex-row overscroll-contain px-4 cursor-grab origin-center"
+        className="flex flex-row overscroll-contain cursor-grab origin-center"
         ref={containerRef}
         style={{
           height: maxHeight,
@@ -156,12 +140,9 @@ export default function InfiniteScroll({
       >
         {items.map((item, i) => (
           <div
-            className="flex items-center justify-center p-4 text-xl font-semibold text-center border-2 border-white rounded-[15px] select-none box-border relative"
+            className="h-11/12 flex-shrink-0 flex items-center justify-center p-3 text-xl font-semibold text-center border-2 border-white bg-gray-300/90 rounded-[15px] select-none box-border relative"
             key={i}
-            style={{
-              minWidth: `${itemMinWidth}px`,
-              marginLeft: negativeMargin,
-            }}
+            style={{ minWidth: `${itemMinWidth}px` }}
           >
             {item.content}
           </div>

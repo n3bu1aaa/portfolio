@@ -4,10 +4,10 @@ import mmtracker from "../assets/images/mmtracker.png";
 
 function Projects() {
   return (
-    <div className="flex flex-col items-center justify-center bg-white py-16">
+    <div className="flex flex-col items-center justify-center bg-[#FFEFEF] py-16">
       <h1 className="text-4xl font-semibold mb-8 mt-32">Projects</h1>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-18">
-        <div className="card bg-white shadow-lg rounded-lg hover:scale-105 hover:shadow-xl transition-transform duration-300">
+        <div className="card bg-[#FFEFEF] shadow-lg rounded-lg hover:scale-105 hover:shadow-xl transition-transform duration-300">
           <div className="front-page">
             <img
               src={gameimage}
@@ -27,7 +27,7 @@ function Projects() {
             </div>
           </div>
         </div>
-        <div className="card bg-white shadow-lg rounded-lg hover:scale-102 hover:shadow-xl transition-transform duration-300">
+        <div className="card bg-[#FFEFEF] shadow-lg rounded-lg hover:scale-102 hover:shadow-xl transition-transform duration-300">
           <div className="front-page">
             <img
               src={mmtracker}
@@ -47,7 +47,7 @@ function Projects() {
             </div>
           </div>
         </div>
-        <div className="card bg-white shadow-lg rounded-lg hover:scale-102 hover:shadow-xl transition-transform duration-300">
+        <div className="card bg-[#FFEFEF] shadow-lg rounded-lg hover:scale-102 hover:shadow-xl transition-transform duration-300">
           <div className="front-page">
             <img
               src={bloomtrace}

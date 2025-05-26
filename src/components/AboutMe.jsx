@@ -59,7 +59,7 @@ const AboutMe = () => {
     </div>,
   ];
   return (
-    <div className="bg-white">
+    <div className="bg-[#FFEFEF]">
       <div className="h-[620px] w-[1200px] mx-auto">
         <p className="text-4xl font-semibold text-center mb-8 pt-16">
           Fun Facts
