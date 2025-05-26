@@ -2,7 +2,7 @@ import photo from "../assets/images/me.jpg";
 
 function Intro() {
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex items-center justify-center h-screen">
       <div className="mx-8">
         <p className="text-6xl font-bold">Ethan Zhou</p>
       </div>

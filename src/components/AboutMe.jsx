@@ -24,7 +24,10 @@ const AboutMe = () => {
     <div>
       <div className="flex items-center justify-center mb-4">
         <video
+          autoPlay
           controls
+          muted
+          loop
           width={300}
           className="rounded-lg shadow-2xl mt-4 h-3/4 w-3/4 border-solid border-2 border-blue-900"
         >
@@ -56,67 +59,71 @@ const AboutMe = () => {
     </div>,
   ];
   return (
-    <div className="h-155">
-      <p className="text-4xl font-semibold text-center mb-8">Fun Facts</p>
-      <div className="grid grid-cols-[350px_1fr] gap-4 h-145">
-        <div className="grid grid-rows-4 gap-8">
-          <div
-            className={`bg-gray-200 rounded-lg flex items-center justify-center p-4 cursor-pointer hover:bg-gray-100 ${
-              hoveredIndex === 0
-                ? "ring-4 ring-blue-400 scale-[1.02] transition-all duration-200 ease-out shadow-xl"
-                : ""
-            }`}
-            onClick={() => setHoveredIndex(0)}
-          >
-            <p>
-              <b>Galois Honour Roll</b>
-              <br></br>Group V (Score of 30/40)
-            </p>
+    <div className="bg-white">
+      <div className="h-[620px] w-[1200px] mx-auto">
+        <p className="text-4xl font-semibold text-center mb-8 pt-16">
+          Fun Facts
+        </p>
+        <div className="grid grid-cols-[350px_1fr] gap-6 h-145">
+          <div className="grid grid-rows-4 gap-8">
+            <div
+              className={`bg-gray-200 rounded-lg flex items-center justify-center p-4 cursor-pointer hover:bg-gray-100 ${
+                hoveredIndex === 0
+                  ? "ring-4 ring-blue-400 scale-[1.02] transition-all duration-200 ease-out shadow-xl"
+                  : ""
+              }`}
+              onClick={() => setHoveredIndex(0)}
+            >
+              <p>
+                <b>2025 Galois Honour Roll</b>
+                <br></br>Group V (Score of 30/40)
+              </p>
+            </div>
+            <div
+              className={`bg-gray-200 rounded-lg flex items-center justify-center cursor-pointer p-4 hover:bg-gray-100 ${
+                hoveredIndex === 1
+                  ? "ring-4 ring-blue-400 scale-[1.02] transition-all duration-200 ease-out shadow-xl"
+                  : ""
+              }`}
+              onClick={() => setHoveredIndex(1)}
+            >
+              <p>
+                <b>Ranked Nationally for Rubik's Cube</b>
+                <br></br>16.51 One Handed Average (76th in Canada)
+              </p>
+            </div>
+            <div
+              className={`bg-gray-200 rounded-lg flex items-center justify-center cursor-pointer p-4 hover:bg-gray-100 ${
+                hoveredIndex === 2
+                  ? "ring-4 ring-blue-400 scale-[1.02] transition-all duration-200 ease-out shadow-xl"
+                  : ""
+              }`}
+              onClick={() => setHoveredIndex(2)}
+            >
+              <p>
+                <b>Chess Enthusiast (2000+ Elo)</b>
+                <br></br>
+                Peak of 2300 in Bullet and 2200 in Blitz
+              </p>
+            </div>
+            <div
+              className={`bg-gray-200 rounded-lg flex items-center justify-center cursor-pointer p-4 hover:bg-gray-100 ${
+                hoveredIndex === 3
+                  ? "ring-4 ring-blue-400 scale-[1.02] transition-all duration-200 ease-out shadow-xl"
+                  : ""
+              }`}
+              onClick={() => setHoveredIndex(3)}
+            >
+              <p>
+                <b>Musician (Piano + Cello + Trumpet)</b>
+                <br></br>
+                RCM Level 10 for Piano and Cello
+              </p>
+            </div>
           </div>
-          <div
-            className={`bg-gray-200 rounded-lg flex items-center justify-center cursor-pointer p-4 hover:bg-gray-100 ${
-              hoveredIndex === 1
-                ? "ring-4 ring-blue-400 scale-[1.02] transition-all duration-200 ease-out shadow-xl"
-                : ""
-            }`}
-            onClick={() => setHoveredIndex(1)}
-          >
-            <p>
-              <b>Ranked Nationally for Rubik's Cube</b>
-              <br></br>16.51 One Handed Average (76th in Canada)
-            </p>
+          <div className="bg-gray-100 p-4 rounded-lg">
+            <h2>{content[hoveredIndex]}</h2>
           </div>
-          <div
-            className={`bg-gray-200 rounded-lg flex items-center justify-center cursor-pointer p-4 hover:bg-gray-100 ${
-              hoveredIndex === 2
-                ? "ring-4 ring-blue-400 scale-[1.02] transition-all duration-200 ease-out shadow-xl"
-                : ""
-            }`}
-            onClick={() => setHoveredIndex(2)}
-          >
-            <p>
-              <b>Chess Enthusiast (2000+ Elo)</b>
-              <br></br>
-              Peak of 2300 in Bullet and 2200 in Blitz
-            </p>
-          </div>
-          <div
-            className={`bg-gray-200 rounded-lg flex items-center justify-center cursor-pointer p-4 hover:bg-gray-100 ${
-              hoveredIndex === 3
-                ? "ring-4 ring-blue-400 scale-[1.02] transition-all duration-200 ease-out shadow-xl"
-                : ""
-            }`}
-            onClick={() => setHoveredIndex(3)}
-          >
-            <p>
-              <b>Musician (Piano + Cello + Trumpet)</b>
-              <br></br>
-              RCM Level 10 for Piano and Cello
-            </p>
-          </div>
-        </div>
-        <div className="bg-gray-100 p-4 rounded-lg">
-          <h2>{content[hoveredIndex]}</h2>
         </div>
       </div>
     </div>
